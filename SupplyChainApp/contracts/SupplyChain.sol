@@ -37,7 +37,9 @@ contract supplyChain {
 
     mapping(uint32 => uint32[]) public productTrack;  // ownerships by Product ID (product_id) / Movement track for a product
 
-    event TransferOwnership(uint32 productId);
+    // Every time we emit a transfer ownership event, it's going to be logged in the blockchain, and it's indexed
+    // You only index 3 parameters, but the data can be stored for free (lightweight log)
+    event TransferOwnership(uint32 indexed productId);
 
     // 'memory' means data is not stored on the blockchain (only in local memory)
     function addParticipant(string memory _name, string memory _pass, address _pAdd, string memory _pType) public returns (uint32){
