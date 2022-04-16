@@ -10,7 +10,7 @@ npm i
 
 ## Run
 ```shell
-npm run start
+npm start
 ```
 
 ## References
@@ -19,3 +19,5 @@ npm run start
 - https://github.com/trufflesuite/truffle/tree/develop/packages/hdwallet-provider
 - https://betterprogramming.pub/learn-solidity-events-2801d6a99a92
 - https://blog.infura.io/ethereum-javascript-libraries-web3-js-vs-ethers-js-part-ii/#starting-our-project-part-1
+- https://dev.to/rounakbanik/building-a-web3-frontend-with-react-340c
+- https://docs.ethers.io/v5/getting-started/

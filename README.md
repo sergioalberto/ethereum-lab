@@ -23,3 +23,9 @@ truffle deploy --reset
 # Connect to 'development' network
 truffle console
 ```
+
+##  Build and run the client with Docker
+```shell
+docker build -f Dockerfile -t supply-chain-dapp .
+docker run -it -p 3000:3000 supply-chain-dapp
+```
