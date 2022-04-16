@@ -2,6 +2,8 @@
 A real word supply chain using Ethereum blockchain app.
 Write 2 smart contracts: one to define a token for payment and another for asset tracking and management.
 
+_Note:_ You should create a `.secret` file with your 12 secret words from MetaMask wallet.
+
 ## Set up
 - Download `Ganache` (it is a test blockchain that helps with deploying smart contracts, developing applications, and running tests): http://trufflesuite.com/ganache/
 - Open `Ganache` and create a quick workspace
@@ -53,3 +55,8 @@ truffle test
 npm install @truffle/hdwallet-provider
 ```
 More info about it [here](https://trufflesuite.com/guides/using-infura-custom-provider/)
+
+## Deploy to Popsten
+```shell
+truffle deploy --network ropsten
+```

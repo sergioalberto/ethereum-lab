@@ -1,0 +1,17 @@
+{
+  "name": "SupplyChainWeb3Client",
+  "version": "1.0.0",
+  "description": "This is an example of a Web3 using a blockchain app about Supply Chain",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "sergiogq",
+  "license": "ISC",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.6",
+    "web3": "^1.7.3"
+  }
+}
