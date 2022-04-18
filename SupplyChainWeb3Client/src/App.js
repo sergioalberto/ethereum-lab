@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import contract from './contracts/supplyChain.json';
-import { ethers } from 'ethers';
+import {ethers} from 'ethers';
 
 const abi = contract.abi;
 
@@ -53,14 +53,27 @@ function App() {
 
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
-                provider.getBalance(currentAccount).then((balance) => {
-                    // convert a currency unit from wei to ether
-                    const balanceInEth = ethers.utils.formatEther(balance);
-                    console.log(`Balance: ${balanceInEth} ETH`);
-                    alert(`Balance: ${balanceInEth} ETH`);
-                })
+                const balance = await provider.getBalance(currentAccount);
+                // convert a currency unit from wei to ether
+                const balanceInEth = ethers.utils.formatEther(balance);
+                console.log(`Balance: ${balanceInEth} ETH`);
+                alert(`Balance: ${balanceInEth} ETH.`);
+
+                const chainId = (await provider.getNetwork()).chainId;
+                const contractAddress = contract.networks[chainId].address;
+
+                const signer = provider.getSigner();
+                const supplyChain = new ethers.Contract(contractAddress, abi, signer);
+
+                const gas = await supplyChain.estimateGas.getParticipant(0);
+                console.log(gas.toNumber());
+
+                const participant = await supplyChain.functions.getParticipant(0);
+                console.log(participant);
+
+                console.log("Initialize payment.");
             } else {
-                console.log("Ethereum object does not exist");
+                console.log("Ethereum object does not exist.");
             }
 
         } catch (err) {
