@@ -65,13 +65,19 @@ function App() {
                 const signer = provider.getSigner();
                 const supplyChain = new ethers.Contract(contractAddress, abi, signer);
 
+                // Create new Participant
+                /* const participantTxn = await supplyChain.functions.addParticipant("Alberto", "5678", currentAccount, "Supplier");
+
+                console.log("Mining... please wait");
+                await participantTxn.wait();
+
+                console.log(`Mined, see transaction hash: ${participantTxn.hash}`); */
+
                 const gas = await supplyChain.estimateGas.getParticipant(0);
                 console.log(gas.toNumber());
 
-                const participant = await supplyChain.functions.getParticipant(0);
+                const participant = await supplyChain.functions.getParticipant(1);
                 console.log(participant);
-
-                console.log("Initialize payment.");
             } else {
                 console.log("Ethereum object does not exist.");
             }
