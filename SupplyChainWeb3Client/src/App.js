@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import contract from './contracts/supplyChain.json';
-import {ethers} from 'ethers';
+import { ethers } from 'ethers';
+import {Main} from "./components/Main";
+import { message } from 'antd';
 
 const abi = contract.abi;
 
@@ -34,7 +36,7 @@ function App() {
         const { ethereum } = window;
 
         if (!ethereum) {
-            alert("Please install Metamask!");
+            message.info("Please, install Metamask!");
             return;
         }
 
@@ -47,6 +49,7 @@ function App() {
         }
     }
 
+    // eslint-disable-next-line no-unused-vars
     const getBalanceHandler = async () => {
         try {
             const { ethereum } = window;
@@ -89,17 +92,19 @@ function App() {
 
     const connectWalletButton = () => {
         return (
-            <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
-                Connect Wallet
-            </button>
+            <>
+                <div className='main-app'>
+                    <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
+                        Connect Wallet
+                    </button>
+                </div>
+            </>
         )
     }
 
-    const getBalance = () => {
+    const getParticipants = () => {
         return (
-            <button onClick={getBalanceHandler} className='cta-button mint-nft-button'>
-                Get Balance
-            </button>
+            <Main />
         )
     }
 
@@ -108,10 +113,10 @@ function App() {
     }, [])
 
     return (
-        <div className='main-app'>
-            <h1>Supply Chain App</h1>
+        <div>
+            <h1 className='main-app'>Supply Chain App</h1>
             <div>
-                {currentAccount ? getBalance() : connectWalletButton()}
+                {currentAccount ? getParticipants() : connectWalletButton()}
             </div>
         </div>
     )
