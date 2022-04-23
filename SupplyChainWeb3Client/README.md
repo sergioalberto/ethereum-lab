@@ -13,6 +13,11 @@ npm i
 npm start
 ```
 
+## Run tests
+```shell
+CI=true npm test
+```
+
 ## References
 - https://web3js.readthedocs.io/en/v1.7.3/getting-started.html
 - https://coderrocketfuel.com/article/configure-infura-with-web3-js-and-node-js
