@@ -11,16 +11,19 @@ export default {
 
 const manyParticipants = [
     {
+        key: '1',
         participantID: "1",
         participantAddress: "0xb3c8CbBAA2BC5D37540770Eb6b446078dD208aC5",
         userName: "Sergio",
         participantType: "Manufacturer"
     }, {
+        key: '2',
         participantID: "2",
         participantAddress: "0xb2c8CbBAA2BC5D37540770Eb6b446078dD208aC7",
         userName: "Alberto",
         participantType: "Supplier"
     }, {
+        key: '3',
         participantID: "3",
         participantAddress: "0xb5c8CbBAA2BC5D37540770Eb6b446078dD208aC9",
         userName: "Wen",
@@ -31,13 +34,16 @@ const manyParticipants = [
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <ParticipantsListView {...args} />;
 
+export const SeveralParticipants = Template.bind({});
+SeveralParticipants.args = {
+    data: manyParticipants,
+};
+
 export const EmptyParticipants = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 EmptyParticipants.args = {
     data: [],
 };
 
-export const SeveralParticipants = Template.bind({});
-SeveralParticipants.args = {
-    data: manyParticipants,
-};
+export const ParticipantsLoading = Template.bind({});
+ParticipantsLoading.args = {};

@@ -16,7 +16,7 @@ export const Main = () => {
             <Content style={{ padding: '0 20px', background: "white" }}>
                 <Tabs onChange={callback} type="card">
                     <TabPane tab="Participants" key="1">
-                        <ParticipantsListView data={[]}/>
+                        <ParticipantsListView/>
                     </TabPane>
                     <TabPane tab="Products" key="2">
                         Content of whole products
