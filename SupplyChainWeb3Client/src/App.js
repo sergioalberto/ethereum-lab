@@ -104,7 +104,7 @@ function App() {
 
     const getParticipants = () => {
         return (
-            <Main />
+            <Main/>
         )
     }
 

@@ -11,5 +11,4 @@ RUN CI=true npm test -- --coverage
 
 RUN CI=true npm run build
 
-RUN npm install serve -g --force
-CMD ["serve", "-s", "build"]
+CMD ["npm", "run", "start"]

@@ -14,8 +14,7 @@
  *
  * You'll also need a mnemonic - the twelve word phrase the wallet uses to generate
  * public/private key pairs. If you're publishing your code to GitHub make sure you load this
- * phrase from a file you've .gitignored so it doesn't accidentally become public.
- *
+ * phrase from a file you've .gitignored, so it doesn't accidentally become public.
  */
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
@@ -23,6 +22,8 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const fs = require('fs');
 // YOUR MNEMONIC FROM YOUR WALLET (MetaMask), when we set up MetaMask, it's a bunch of words
 const mnemonic = fs.readFileSync(".secret").toString().trim();
+
+const infuraProjectID = fs.readFileSync("infuraConfig").toString().trim();
 
 module.exports = {
   /**
@@ -59,7 +60,7 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     ropsten: {
-      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/fae3681f202f43c2947b6e61eaa16996`),
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraProjectID}`),
       network_id: 3,       // Ropsten's id
       gas: 4500000,        // Ropsten has a lower block limit than mainnet
       gasPrice: 10000000000,
@@ -69,7 +70,7 @@ module.exports = {
     },
     live: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://mainnet.infura.io/v3/fae3681f202f43c2947b6e61eaa16996");
+        return new HDWalletProvider(mnemonic, `https://mainnet.infura.io/v3/${infuraProjectID}`);
       },
       network_id: 1,
       gas: 7500000,

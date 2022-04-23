@@ -31,5 +31,15 @@ contract('SupplyChain', async accounts => {
     instance = await SupplyChain.deployed();
     participantDetails = await instance.getParticipant(2);
     assert.equal(participantDetails[0], "C");
-  })
+  });
+
+  it("should return All Participants", async () => {
+    let instance = await SupplyChain.deployed();
+    const allParticipants = await instance.getAllParticipants();
+    assert.equal(allParticipants.length, 3);
+
+    assert.equal(allParticipants[0].participantType, "Manufacturer");
+    assert.equal(allParticipants[1].participantType, "Supplier");
+    assert.equal(allParticipants[2].participantType, "Consumer");
+  });
 });

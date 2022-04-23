@@ -26,6 +26,7 @@ contract supplyChain {
         address participantAddress;
     }
     mapping(uint32 => participant) public participants;
+    event AddedParticipant(uint32 indexed participantId);
 
     struct ownership {
         uint32 productId;
@@ -49,6 +50,8 @@ contract supplyChain {
         participants[userId].participantAddress = _pAdd;
         participants[userId].participantType = _pType;
 
+        emit AddedParticipant(userId);
+
         return userId;
     }
 
@@ -56,6 +59,17 @@ contract supplyChain {
         return (participants[_participant_id].userName,
                 participants[_participant_id].participantAddress,
                 participants[_participant_id].participantType);
+    }
+
+    function getAllParticipants() public view returns (participant[] memory) {
+        participant[] memory allParticipants = new participant[](participant_id);
+
+        for (uint32 index = 0; index < participant_id; index ++) {
+            participant storage newParticipant = participants[index];
+            allParticipants[index] = newParticipant;
+        }
+
+        return allParticipants;
     }
 
     function addProduct(uint32 _ownerId,
