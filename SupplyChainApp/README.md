@@ -62,6 +62,6 @@ More info about it [here](https://trufflesuite.com/guides/using-infura-custom-pr
 ```shell
 truffle compile -all --network ropsten
 
-# Note: With `--reset` you will remove EVERYTTHING and re-deploy again
+# Note: With `--reset` you will remove EVERYTHING and re-deploy again
 truffle deploy --network ropsten --reset
 ```

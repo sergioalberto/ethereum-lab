@@ -36,7 +36,7 @@ function App() {
         const { ethereum } = window;
 
         if (!ethereum) {
-            message.info("Please, install Metamask!");
+            message.warn(<div>Please, install <a rel='noreferrer' target='_blank' href='https://metamask.io/download'>Metamask</a> to be able to continue.</div>);
             return;
         }
 

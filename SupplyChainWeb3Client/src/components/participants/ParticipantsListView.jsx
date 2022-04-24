@@ -184,7 +184,8 @@ export const ParticipantsListView = ({ data }) => {
         setIsModalVisible(true);
     };
 
-    const handleOk = () => {
+    const handleAddParticipantButton = () => {
+        fetchParticipants();
         setIsModalVisible(false);
     };
 
@@ -196,8 +197,8 @@ export const ParticipantsListView = ({ data }) => {
         return (
             <>
                 <Button type="primary" onClick={showModal}>Add participant</Button>
-                <Modal title="Add participant" visible={isModalVisible} footer={null} onOk={handleOk} onCancel={handleCancel}>
-                    <AddParticipantView handleAdd={handleOk} handleCancel={handleCancel}/>
+                <Modal title="Add participant" visible={isModalVisible} footer={null} onOk={handleAddParticipantButton} onCancel={handleCancel}>
+                    <AddParticipantView handleAdd={handleAddParticipantButton} handleCancel={handleCancel}/>
                 </Modal>
                 <br/><br/>
                 <Table columns={columns} dataSource={data ? data: participants} />
