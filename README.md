@@ -26,6 +26,13 @@ truffle console
 
 ##  Build and run the client with Docker
 ```shell
-docker build -f Dockerfile -t supply-chain-dapp .
-docker run -it -p 3000:3000 supply-chain-dapp
+# Dev
+docker build -f Dockerfile -t supply-chain-dapp-dev .
+docker run -it -p 3000:3000 supply-chain-dapp-dev
+docker-compose up -d
+docker-compose down -v
+
+#Prod
+docker build -f Dockerfile.prod -t supply-chain-dapp .
+docker run -it -p 3000:80 supply-chain-dapp
 ```

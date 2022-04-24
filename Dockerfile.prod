@@ -1,0 +1,17 @@
+# stage1 - build react app first
+FROM node:14.17.3-alpine AS builder
+WORKDIR /app
+RUN apk add --no-cache git
+
+COPY SupplyChainWeb3Client/package.json ./
+COPY SupplyChainWeb3Client/yarn.lock ./
+
+RUN yarn install --frozen-lockfile
+
+COPY SupplyChainWeb3Client/ ./
+RUN CI=true yarn build
+
+# stage 2 - build the final image and copy the react build files
+FROM nginx:1.19-alpine AS server
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder ./app/build /usr/share/nginx/html

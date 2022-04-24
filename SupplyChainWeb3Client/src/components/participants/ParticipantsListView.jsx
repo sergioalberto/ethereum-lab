@@ -42,7 +42,7 @@ export const ParticipantsListView = ({ data }) => {
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const chainId = (await provider.getNetwork()).chainId;
-                console.log(chainId);
+                console.info(`Chain id = ${chainId}`);
                 const contractAddress = contract.networks[chainId].address;
 
                 const signer = provider.getSigner();
