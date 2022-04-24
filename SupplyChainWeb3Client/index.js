@@ -5,7 +5,9 @@ const fs = require('fs');
 
 // YOUR MNEMONIC FROM YOUR WALLET (MetaMask), when we set up MetaMask, it's a bunch of words
 const mnemonicPhrase = fs.readFileSync(".secret").toString().trim();
-const URL = "https://ropsten.infura.io/v3/fae3681f202f43c2947b6e61eaa16996";
+const infuraProjectID = fs.readFileSync("infuraConfig").toString().trim();
+
+const URL = `https://ropsten.infura.io/v3/${infuraProjectID}`;
 
 const init = async () => {
     const web3 = new Web3 (new Web3.providers.HttpProvider(URL))

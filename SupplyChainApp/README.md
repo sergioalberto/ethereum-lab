@@ -18,6 +18,8 @@ truffle deploy --reset
 
 # Connect to 'development' network
 truffle console
+truffle console --network ropsten
+
 > const instance = await supplyChain.deployed()
 > instance
 
@@ -58,5 +60,8 @@ More info about it [here](https://trufflesuite.com/guides/using-infura-custom-pr
 
 ## Deploy to Popsten
 ```shell
-truffle deploy --network ropsten
+truffle compile -all --network ropsten
+
+# Note: With `--reset` you will remove EVERYTTHING and re-deploy again
+truffle deploy --network ropsten --reset
 ```
